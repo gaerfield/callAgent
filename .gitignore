@@ -1,3 +1,16 @@
+# folder to ignore
+build
+out
+web
+
+# gradle
+.gradle
+!gradle-wrapper.jar
+
+# Idea-Files
+.idea
+*.iml
+
 # Compiled class file
 *.class
 

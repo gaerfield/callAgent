@@ -1,0 +1,19 @@
+server:
+  port: 21337
+
+spring:
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    check-template: true
+    check-template-location: true
+
+  application:
+    name: CallAgent
+
+logging:
+  level:
+    root: INFO

@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/layout">
+    <head>
+        <title>Home Page</title>
+    </head>
+    <body onload="setBookmarkletLink()">
+        <div layout:fragment="content">
+            <script>
+                function setBookmarkletLink() {
+                    baseUrl = location.protocol+"//"+location.hostname+(location.port ? ":"+location.port: "");
+                    href = 'function(){var h="",s,g,c,i;if(window.getSelection){s=window.getSelection();if(s.rangeCount){c=document.createElement("div");for(i=0;i<s.rangeCount;++i){c.appendChild(s.getRangeAt(i).cloneContents());}h=c.innerHTML}}else if((s=document.selection)&&s.type=="Text"){h=s.createRange().htmlText;}window.open("'+baseUrl+'/call/"+h.trim(),"_blank");}'
+                    document.getElementById("bookmarklet").href = "javascript:("+href+")()";
+                }
+            </script>
+            <a class="btn btn-primary" type="submit" th:href="@{/testApiReachability}">Ping Sipgate</a>
+            <a class="btn btn-primary" type="submit" th:href="@{/testAuthentication}">Ping Sipgate authenticated</a>
+            <a class="btn btn-success" id="bookmarklet" type="submit" href=''>Click2Call Bookmarklet</a>
+
+            <br /><br />
+
+            <form action="#" th:action="@{/phonecall}" th:object="${phonecall}" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{targetPhone}" placeholder="0176123456" id="targetphone" name="targetphone"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{sourcePhone}" placeholder="phone (optional)" id="sourcephone" name="sourcephone"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{fakeNumber}" placeholder="fakenumber (optional)" id="fakenumber" name="fakenumber"/>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">call</button>
+            </form>
+
+            <br />
+
+            <form action="#" th:action="@{/sendSms}" th:object="${smsMessage}" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{phone}" placeholder="phone" id="targetphone" name="targetphone"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{message}" placeholder="hello from callagent" id="smstext" name="smstext"/>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">sms</button>
+            </form>
+
+        </div>
+    </body>
+</html>

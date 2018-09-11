@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Header</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navigation">
+        <a class="navbar-brand" href="#">Call - Agent</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#" th:href="@{/}">
+                    <span class="glyphicon glyphicon-home"></span>&nbsp;Home
+                </a>
+                <a class="nav-item nav-link" href="#" th:href="@{/account}">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;Account
+                </a>
+                <a class="nav-item nav-link" href="#" th:href="@{/preferences}">
+                    <span class="glyphicon glyphicon-cog"></span>&nbsp;Preferences
+                </a>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>
